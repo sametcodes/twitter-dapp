@@ -1,5 +1,6 @@
 import { Container } from 'styled/layout';
-import { Navbar, NavbarContent, WalletAddress, NavbarLogo, ConnectButton } from 'styled/header';
+import { Navbar, NavbarContent, WalletAddress, NavbarLogo } from 'styled/header';
+import { ButtonInverse } from 'styled/shared';
 
 import { useAccount, useConnect } from 'wagmi'
 
@@ -14,10 +15,10 @@ const Header = () => {
             <NavbarContent>
                 <NavbarLogo>Logo</NavbarLogo>
                 {address && <WalletAddress>{address}</WalletAddress>}
-                {!address && <ConnectButton
+                {!address && <ButtonInverse
                     disabled={!connector.ready} onClick={() => connector.connect()}>
                     Connect
-                </ConnectButton>}
+                </ButtonInverse>}
             </NavbarContent>
         </Container >
     </Navbar>

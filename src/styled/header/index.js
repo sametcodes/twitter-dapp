@@ -16,15 +16,3 @@ export const NavbarLogo = styled.h2``
 export const WalletAddress = styled.p`
     font-size: 12px;
 `
-
-export const ConnectButton = styled.button`
-    padding: 10px 20px;
-    background-color: #fff;
-    border: 1px solid #777;
-    border-radius: 25px;
-    cursor: pointer;
-
-    &:hover{
-        background-color: #eee;
-    }
-`
