@@ -1,14 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { hardhat } from 'wagmi/chains';
+import { WagmiConfig, createClient, configureChains } from 'wagmi';
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { publicProvider } from 'wagmi/providers/public';
+
+const { provider, webSocketProvider, chains } = configureChains(
+  [hardhat],
+  [publicProvider()]
+);
+
+const client = createClient({
+  autoConnect: true,
+  connectors: [new MetaMaskConnector({ chains })],
+  provider,
+  webSocketProvider
+})
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <WagmiConfig client={client}>
     <App />
-  </React.StrictMode>
+  </WagmiConfig>
 );
 
 // If you want to start measuring performance in your app, pass a function
